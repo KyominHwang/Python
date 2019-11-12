@@ -56,3 +56,5 @@ class Fibo:
   
   #python2 에서는 __init__.py를 생성해야지 패키지로서 인식함.
   
+#단위테스트
+#if __name__ == "__main__":
