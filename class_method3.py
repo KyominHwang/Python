@@ -38,6 +38,22 @@ class Car():
     def get_price_calc(self):
         return "After Car Price -> company : {}, price : {}".format(self._company, Car.price_per_raise * self._details["price"])
 
+    # Class Method
+    @classmethod
+    def raise_price(cls, per):
+        if per <= 1:
+            print("Pleas Enter 1 Or More")
+            return
+        cls.price_per_raise = per
+        print("Succeed! price increased.")
+
+    # Static Method
+    @staticmethod
+    def is_bmw(inst):
+        if inst._company == "Bmw":
+            return f"Ok! This car is {inst._company}"
+        return "Sorry. This car is not Bmw!"
+
 # self 의미 : 고유의 값(id)을 저장하기 위한 예약어
 car1 = Car("Ferrari", {"color" : "white" , "horsepower" : 400, "price" : 8000})
 car2 = Car("Bmw", {"color" : "black" ,"horsepower" : 270,"price" : 5000})
@@ -60,3 +76,17 @@ Car.price_per_raise = 1.4
 print(car1.get_price_calc())
 print(car2.get_price_calc())
 
+#가격 인상(클래스 메소드 사용)
+Car.raise_price(1.6)
+
+# 가격 정보(인상 후)
+print(car1.get_price_calc())
+print(car2.get_price_calc())
+
+# 인스턴스로 호출(static method)
+print(car1.is_bmw(car1))
+print(car2.is_bmw(car2))
+
+# 클래스로 호출(static method)
+print(Car.is_bmw(car1))
+print(Car.is_bmw(car2))
