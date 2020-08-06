@@ -76,3 +76,27 @@ print(p1._fields, p2._fields, p3._fields)
 
 # _asdict() : OrderedDict 반환
 print(p1._asdict())
+
+# 실 사용 실습
+# 반 20명, 4개의 반(A,B,C,D)
+
+Classes = namedtuple("Classes", ["rank", "number"])
+
+# 그룹 리스트 선언
+numbers = [str(n) for n in range(1,21)]
+ranks = "A B C D".split()
+
+# List Comprehension
+students = [Classes(rank, number) for rank in ranks for number in numbers]
+
+print(len(students))
+print(students)
+
+# 추천
+students2 = [Classes(rank, number)
+             for rank in "A B C D".split()
+                for number in [str(n)
+                    for n in range(1,21)]
+             ]
+
+print(students2)
